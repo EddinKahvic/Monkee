@@ -14,7 +14,13 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      module-alias:
+        specifier: ^2.2.3
+        version: 2.2.3
     devDependencies:
+      '@types/node':
+        specifier: ^22.1.0
+        version: 22.1.0
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
@@ -93,6 +99,9 @@ packages:
 
   magic-bytes.js@1.10.0:
     resolution: {integrity: sha512-/k20Lg2q8LE5xiaaSkMXk4sfvI+9EGEykFS4b0CHHGWqDYU0bGUFSwchNOMA56D7TCs9GwVTkqe9als1/ns8UQ==}
+
+  module-alias@2.2.3:
+    resolution: {integrity: sha512-23g5BFj4zdQL/b6tor7Ji+QY4pEfNH784BMslY9Qb0UnJWRAt+lQGLYmRaM0KDBwIG23ffEBELhZDP2rhi9f/Q==}
 
   ts-mixer@6.0.4:
     resolution: {integrity: sha512-ufKpbmrugz5Aou4wcr5Wc1UUFWOLhq+Fm6qa6P0w0K5Qw2yhaUoiWszhCVuNQyNwrlGiscHOmqYoAox1PtvgjA==}
@@ -221,6 +230,8 @@ snapshots:
   lodash@4.17.21: {}
 
   magic-bytes.js@1.10.0: {}
+
+  module-alias@2.2.3: {}
 
   ts-mixer@6.0.4: {}
 
