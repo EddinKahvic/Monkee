@@ -11,9 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.15.3",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "module-alias": "^2.2.3"
   },
   "devDependencies": {
+    "@types/node": "^22.1.0",
     "typescript": "^5.5.4"
+  },
+  "_moduleAliases": {
+    "~": "./src"
   }
 }

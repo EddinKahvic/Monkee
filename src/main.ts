@@ -1,6 +1,4 @@
-import AmICool from './interactions/amicool'
-import { addInteractions, startClient } from './config/client.config'
-
-addInteractions([AmICool])
+import 'module-alias/register'
+import { startClient } from './config/client.config'
 
 startClient()
