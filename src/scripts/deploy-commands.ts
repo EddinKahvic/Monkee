@@ -14,7 +14,7 @@ if (!clientId) throw 'No clientId'
 const rest = new REST().setToken(token)
 
 // Get commands and convert it to array of data objects in JSON format
-const commands = getCommands().map((c) => c.data.toJSON())
+const commands = getCommands(false).map((c) => c.data.toJSON())
 
 // and deploy your commands!
 async function deploy() {
