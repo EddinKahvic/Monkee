@@ -9,9 +9,11 @@ import { getCommands } from '~/helpers/commands.helper'
 
 const image = new AttachmentBuilder('assets/monkee.png')
 
+const noDescription = 'This command has no description'
+
 const commands = getCommands().map((command) => ({
   name: `/${command.data.name}`,
-  value: `\`${command.information!.description!}\``,
+  value: `\`${command.information?.description ?? noDescription}\``,
 }))
 
 const embed = new EmbedBuilder()
