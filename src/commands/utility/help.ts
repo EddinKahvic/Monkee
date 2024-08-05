@@ -5,14 +5,20 @@ import {
   AttachmentBuilder,
 } from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
+import { getCommands } from '~/helpers/commands.helper'
 
 const image = new AttachmentBuilder('assets/monkee.png')
 
+const commands = getCommands().map((command) => ({
+  name: `/${command.data.name}`,
+  value: `\`${command.information!.description!}\``,
+}))
+
 const embed = new EmbedBuilder()
-  .setColor('Random')
+  .setColor(0x729c7c)
   .setAuthor({ name: 'Monkee', iconURL: 'attachment://monkee.png' })
   .setTitle('List of commands')
-  .addFields({ name: 'Command', value: 'Description' })
+  .addFields(commands)
   .setTimestamp()
 
 const data = new SlashCommandBuilder()
@@ -23,9 +29,4 @@ async function execute(interaction: ChatInputCommandInteraction) {
   await interaction.reply({ embeds: [embed], files: [image] })
 }
 
-export default new CommandBuilder()
-  .setData(data)
-  .setExecutable(execute)
-  .setInformation({
-    description: 'bla bla bla bla helps you',
-  })
+export default new CommandBuilder().setData(data).setExecutable(execute)
