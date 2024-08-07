@@ -12,6 +12,7 @@ const client = new Client({
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.MessageContent,
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates,
   ],
 }) as ClientWithCommands
 
