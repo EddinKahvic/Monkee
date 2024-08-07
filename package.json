@@ -13,6 +13,7 @@
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "module-alias": "^2.2.3",
+    "r6operators": "^2.9.0",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
