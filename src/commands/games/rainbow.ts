@@ -10,6 +10,9 @@ import {
   getRandomOperator,
 } from '~/helpers/rainbow.helpers'
 
+const SIDE_REQUIRED = 'A side is required'
+const ERROR_PICKING_OP = 'Something went wrong when picking an operator'
+
 const sides = [
   { name: 'Attacking', value: 'attacking' },
   { name: 'Defense', value: 'defence' },
@@ -29,19 +32,13 @@ const data = new SlashCommandBuilder()
 async function execute(interaction: ChatInputCommandInteraction) {
   const side = interaction.options.getString('side')
 
-  if (!side) {
-    await interaction.reply('A side is required')
-    return
-  }
+  if (!side) return await interaction.reply(SIDE_REQUIRED)
 
   const operator = getRandomOperator(side)
 
   const iconBuffer = await createOperatorIconBuffer(operator)
 
-  if (!iconBuffer) {
-    await interaction.reply('Something went wrong when picking an operator')
-    return
-  }
+  if (!iconBuffer) return await interaction.reply(ERROR_PICKING_OP)
 
   const iconName = `${operator.id}.png`
   const icon = new AttachmentBuilder(iconBuffer, { name: iconName })
@@ -59,5 +56,5 @@ export default new CommandBuilder()
   .setExecutable(execute)
   .setInformation({
     description:
-      'Picks a random operator from either attacking or defender roaster',
+      'Picks a random operator from either attacking or defender side',
   })
