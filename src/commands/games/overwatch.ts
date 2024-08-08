@@ -6,6 +6,12 @@ import {
 import CommandBuilder from '~/classes/command.classes'
 import { getHeroes } from '~/helpers/overwatch.helper'
 
+const roles = [
+  { name: 'damage', value: 'damage' },
+  { name: 'support', value: 'support' },
+  { name: 'tank', value: 'tank' },
+]
+
 const data = new SlashCommandBuilder()
   .setName('overwatch')
   .setDescription('Picks a random hero for you')
@@ -14,11 +20,7 @@ const data = new SlashCommandBuilder()
       .setName('role')
       .setDescription('Pick a role')
       .setRequired(true)
-      .addChoices(
-        { name: 'damage', value: 'damage' },
-        { name: 'support', value: 'support' },
-        { name: 'tank', value: 'tank' }
-      )
+      .addChoices(roles)
   )
 
 async function execute(interaction: ChatInputCommandInteraction) {
@@ -40,4 +42,10 @@ async function execute(interaction: ChatInputCommandInteraction) {
   await interaction.reply({ embeds: [embed] })
 }
 
-export default new CommandBuilder().setData(data).setExecutable(execute)
+export default new CommandBuilder()
+  .setData(data)
+  .setExecutable(execute)
+  .setInformation({
+    description:
+      'Picks a random hero based on the role provided from Overwatch 2',
+  })
