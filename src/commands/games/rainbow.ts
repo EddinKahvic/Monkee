@@ -58,5 +58,5 @@ export default new CommandBuilder()
   .setExecutable(execute)
   .setInformation({
     description:
-      'Picks a random operator from either attacking or defender side',
+      'Picks a random Rainbow Six Siege operator from either attacking or defender side',
   })
