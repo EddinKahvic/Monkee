@@ -33,11 +33,12 @@ export function getOperator(name: string) {
 // Picks a random operator from all available operators
 // If side is provided, only pick operator from that side
 export function getRandomOperator(side?: string) {
-  let operators: Operator[]
+  let operators: Operator[] = []
 
   if (side === OperatorSides.ATTACKER) operators = getAttackerOperators()
-  else if (side === OperatorSides.DEFENDER) operators = getDefenderOperators()
-  else operators = getOperators()
+  if (side === OperatorSides.DEFENDER) operators = getDefenderOperators()
+
+  if (operators.length === 0) return
 
   return getRandomItem(operators)
 }

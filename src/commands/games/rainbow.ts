@@ -13,6 +13,7 @@ import {
 
 const SIDE_REQUIRED = 'A side is required'
 const ERROR_PICKING_OP = 'Something went wrong when picking an operator'
+const ICON_BUFFER_INV = 'Failed to get operator icon'
 
 const sides = [
   { name: 'Attacker', value: OperatorSides.ATTACKER },
@@ -37,9 +38,11 @@ async function execute(interaction: ChatInputCommandInteraction) {
 
   const operator = getRandomOperator(side)
 
+  if (!operator) return interaction.reply(ERROR_PICKING_OP)
+
   const iconBuffer = await createOperatorIconBuffer(operator)
 
-  if (!iconBuffer) return await interaction.reply(ERROR_PICKING_OP)
+  if (!iconBuffer) return await interaction.reply(ICON_BUFFER_INV)
 
   // Create embed with image and operator to play
   const iconName = `${operator.id}.png`
