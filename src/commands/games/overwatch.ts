@@ -30,13 +30,13 @@ async function execute(interaction: ChatInputCommandInteraction) {
   }
 
   const index = Math.floor(Math.random() * heroes.length)
-  const result = heroes[index]
+  const hero = heroes[index]
 
   const embed = new EmbedBuilder()
     .setColor(0x729c7c)
-    .setTitle(`${result.name}`)
-    .setThumbnail(result.portrait)
-    .setDescription(`${interaction.user} is playing as ${result.name}!`)
+    .setTitle(`${hero.name}`)
+    .setThumbnail(hero.portrait)
+    .setDescription(`${interaction.user} is playing as ${hero.name}!`)
   await interaction.reply({ embeds: [embed] })
 }
 
