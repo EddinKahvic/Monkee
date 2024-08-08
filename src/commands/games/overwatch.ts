@@ -40,4 +40,10 @@ async function execute(interaction: ChatInputCommandInteraction) {
   await interaction.reply({ embeds: [embed] })
 }
 
-export default new CommandBuilder().setData(data).setExecutable(execute)
+export default new CommandBuilder()
+  .setData(data)
+  .setExecutable(execute)
+  .setInformation({
+    description:
+      'Picks a random hero based on the role provided from Overwatch 2',
+  })
