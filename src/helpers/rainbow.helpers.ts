@@ -2,16 +2,25 @@ import r6operators, { Operator } from 'r6operators'
 import sharp from 'sharp'
 import { getRandomItem } from './random.helpers'
 
+export const OperatorSides = {
+  ATTACKER: 'Attacker',
+  DEFENDER: 'Defender',
+}
+
 export function getOperators() {
   return Object.values(r6operators)
 }
 
 export function getAttackerOperators() {
-  return getOperators().filter((operator) => operator.role === 'Attacker')
+  const operators = getOperators()
+
+  return operators.filter((op) => op.role === OperatorSides.ATTACKER)
 }
 
 export function getDefenderOperators() {
-  return getOperators().filter((operator) => operator.role === 'Defender')
+  const operators = getOperators()
+
+  return operators.filter((op) => op.role === OperatorSides.DEFENDER)
 }
 
 // Get operator by operator id (lowercased operator name)
@@ -26,15 +35,15 @@ export function getOperator(name: string) {
 export function getRandomOperator(side?: string) {
   let operators: Operator[]
 
-  if (side === 'attacking') operators = getAttackerOperators()
-  else if (side === 'defense') operators = getDefenderOperators()
+  if (side === OperatorSides.ATTACKER) operators = getAttackerOperators()
+  else if (side === OperatorSides.DEFENDER) operators = getDefenderOperators()
   else operators = getOperators()
 
   return getRandomItem(operators)
 }
 
 export async function createOperatorIconBuffer(operator: Operator) {
-  const operatorSVGIcon = operator.toSVG({ width: 100, height: 100 })
+  const operatorSVGIcon = operator.toSVG()
 
   if (typeof operatorSVGIcon !== 'string') return
 
