@@ -1,4 +1,4 @@
-name: Deploy Node.js App
+name: Deploy commands globally
 
 on:
   push:
