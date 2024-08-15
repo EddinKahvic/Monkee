@@ -25,4 +25,6 @@ jobs:
         run: pnpm install
 
       - name: Run deploy script
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
         run: pnpm run deploy
