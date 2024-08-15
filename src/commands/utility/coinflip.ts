@@ -31,8 +31,8 @@ function doCoinFlip() {
 // If custom outcome is provided, use that.
 export function getOutcomeAsString(
   outcome: boolean,
-  heads: Nullable<string>,
-  tails: Nullable<string>
+  heads?: Nullable<string>,
+  tails?: Nullable<string>
 ) {
   const actual = outcome ? 'tails' : 'heads'
 
