@@ -1,10 +1,32 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
 
 const data = new SlashCommandBuilder().setName('coinflip').setDescription('Does a coin flip')
 
+const OUTCOMES = {
+  "tails": "Tails",
+  "heads": "Heads"
+}
+
+function doCoinFlip()  {
+  return Math.random() > 0.5
+}
+
+function getOutcomeAsString(outcome: boolean) {
+  const actual = outcome ? "tails" : "heads"
+
+  return OUTCOMES[actual]
+}
+
 async function execute(interaction: ChatInputCommandInteraction) {
-  return
+  const outcome = doCoinFlip()
+  const actual = getOutcomeAsString(outcome)
+
+  const embed = new EmbedBuilder()
+  .setColor(0x729c7c)
+  .setTitle(actual)
+  
+  return await interaction.reply({ embeds: [embed] })
 }
 
 export default new CommandBuilder()
