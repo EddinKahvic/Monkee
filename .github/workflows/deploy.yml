@@ -3,7 +3,7 @@ name: Deploy commands globally
 on:
   push:
     branches:
-      - 16-create-github-action-for-automatically-deploying-commands
+      - main
 
 jobs:
   deploy:
