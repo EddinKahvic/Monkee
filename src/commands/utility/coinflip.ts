@@ -1,31 +1,62 @@
-import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+import {
+  ChatInputCommandInteraction,
+  EmbedBuilder,
+  SlashCommandBuilder,
+} from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
+import { Nullable } from '~/types'
 
-const data = new SlashCommandBuilder().setName('coinflip').setDescription('Does a coin flip')
+const data = new SlashCommandBuilder()
+  .setName('coinflip')
+  .setDescription('Does a coin flip')
+  .addStringOption(option =>
+    option.setName('heads').setDescription("Customize 'heads' outcome")
+  )
+  .addStringOption(option =>
+    option.setName('tails').setDescription("Customize 'tails' outcome")
+  )
 
-const OUTCOMES = {
-  "tails": "Tails",
-  "heads": "Heads"
+const DEFAULT_OUTCOMES = {
+  tails: 'Tails',
+  heads: 'Heads',
 }
 
-function doCoinFlip()  {
+function doCoinFlip() {
   return Math.random() > 0.5
 }
 
-function getOutcomeAsString(outcome: boolean) {
-  const actual = outcome ? "tails" : "heads"
+// Exported for testing
+// Takes the outcome as a boolean and returns
+// the corresponding string outcome.
+// If custom outcome is provided, use that.
+export function getOutcomeAsString(
+  outcome: boolean,
+  heads: Nullable<string>,
+  tails: Nullable<string>
+) {
+  const actual = outcome ? 'tails' : 'heads'
 
-  return OUTCOMES[actual]
+  if (actual === 'heads' && heads) return heads
+  if (actual === 'tails' && tails) return tails
+
+  return DEFAULT_OUTCOMES[actual]
 }
 
 async function execute(interaction: ChatInputCommandInteraction) {
-  const outcome = doCoinFlip()
-  const actual = getOutcomeAsString(outcome)
+  // Extract custom outcomes
+  const heads = interaction.options.getString('heads')
+  const tails = interaction.options.getString('tails')
 
-  const embed = new EmbedBuilder()
-  .setColor(0x729c7c)
-  .setTitle(actual)
-  
+  // Do coin flip
+  const outcome = doCoinFlip()
+
+  // Get the actual outcome
+  const actual = getOutcomeAsString(outcome, heads, tails)
+
+  // TODO: Make the embed prettier
+  // Create embed with presentation of outcome
+  const embed = new EmbedBuilder().setColor(0x729c7c).setTitle(actual)
+
   return await interaction.reply({ embeds: [embed] })
 }
 
