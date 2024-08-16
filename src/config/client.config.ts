@@ -17,7 +17,7 @@ const client = new Client({
 
 client.commands = getCommandsAsCollection()
 
-client.on(Events.InteractionCreate, async (interaction) => {
+client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return
 
   const c = interaction.client as ClientWithCommands
@@ -48,7 +48,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 })
 
 export function addInteractions(interactions: Interaction[]) {
-  for (let interaction of interactions) {
+  for (const interaction of interactions) {
     interaction(client)
   }
 }

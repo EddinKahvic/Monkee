@@ -14,7 +14,7 @@ if (!clientId) throw 'No clientId'
 const rest = new REST().setToken(token)
 
 // Get commands and convert it to array of data objects in JSON format
-const commands = getCommands(false).map((c) => c.data.toJSON())
+const commands = getCommands(false).map(c => c.data.toJSON())
 
 // and deploy your commands!
 async function deploy() {
@@ -24,9 +24,11 @@ async function deploy() {
     )
 
     // The put method is used to fully refresh all commands in the guild with the current set
-    const data: any = await rest.put(Routes.applicationCommands(clientId!), {
+    const data = (await rest.put(Routes.applicationCommands(clientId!), {
       body: commands,
-    })
+    })) as unknown[] | undefined
+
+    if (!data) throw "REST put failed: Couldn't PUT commands"
 
     console.log(
       `Successfully reloaded ${data.length} application (/) commands.`

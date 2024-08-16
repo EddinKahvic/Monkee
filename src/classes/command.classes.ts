@@ -16,8 +16,8 @@ export default class CommandBuilder {
   }
 
   public isValidCommand() {
-    if (typeof this._data === undefined) return false
-    if (typeof this._execute === undefined) return false
+    if (typeof this._data === 'undefined') return false
+    if (typeof this._execute === 'undefined') return false
 
     return true
   }

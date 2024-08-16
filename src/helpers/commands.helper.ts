@@ -28,6 +28,7 @@ export function getCommands(ignoreWarnings = true) {
     // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
     for (const file of commandFiles) {
       const filePath = path.join(commandsPath, file)
+
       const builder = require(filePath).default as CommandBuilder | undefined
 
       if (builder && builder.isValidCommand()) {
@@ -50,7 +51,7 @@ export function getCommands(ignoreWarnings = true) {
 export function getCommandsAsCollection(ignoreWarnings = true) {
   const commands = getCommands(ignoreWarnings)
 
-  const collection = new Collection<string, any>()
+  const collection = new Collection<string, Command>()
 
   for (const command of commands) {
     collection.set(command.data.name, command)

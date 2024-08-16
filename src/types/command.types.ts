@@ -14,7 +14,7 @@ export interface CommandInformation {
 
 export type CommandExecutable = (
   interaction: ChatInputCommandInteraction
-) => Promise<any>
+) => Promise<unknown>
 
 export interface Command {
   data: SlashCommandBuilderLike
