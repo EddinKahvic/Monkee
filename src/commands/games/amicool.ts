@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
-import isCool from '~/helpers/isCool'
+import isCool from '~/helpers/amicool.helper'
 
 const data = new SlashCommandBuilder()
   .setName('amicool')

@@ -5,7 +5,7 @@ import {
 } from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
 import { getHeroes } from '~/helpers/overwatch.helper'
-import { getRandomItem } from '~/helpers/random.helpers'
+import { getRandomItem } from '~/helpers/random.helper'
 
 const roles = [
   { name: 'damage', value: 'damage' },

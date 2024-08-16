@@ -9,7 +9,7 @@ import {
   createOperatorIconBuffer,
   getRandomOperator,
   OperatorSides,
-} from '~/helpers/rainbow.helpers'
+} from '~/helpers/rainbow.helper'
 
 const SIDE_REQUIRED = 'A side is required'
 const ERROR_PICKING_OP = 'Something went wrong when picking an operator'
@@ -23,7 +23,7 @@ const sides = [
 const data = new SlashCommandBuilder()
   .setName('rainbow')
   .setDescription('Picks a random operator for you')
-  .addStringOption((option) =>
+  .addStringOption(option =>
     option
       .setName('side')
       .setDescription('Pick attacker or defender side')
