@@ -5,6 +5,7 @@ import {
 } from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
 import { getHeroes } from '~/helpers/overwatch.helper'
+import { getRandomItem } from '~/helpers/random.helpers'
 
 const roles = [
   { name: 'damage', value: 'damage' },
@@ -15,7 +16,7 @@ const roles = [
 const data = new SlashCommandBuilder()
   .setName('overwatch')
   .setDescription('Picks a random hero for you')
-  .addStringOption((option) =>
+  .addStringOption(option =>
     option
       .setName('role')
       .setDescription('Pick a role')
@@ -26,13 +27,12 @@ const data = new SlashCommandBuilder()
 async function execute(interaction: ChatInputCommandInteraction) {
   const heroes = await getHeroes(interaction.options.getString('role')!)
 
-  if (typeof heroes === 'string') {
-    interaction.reply(heroes)
+  if (heroes instanceof Error) {
+    interaction.reply(heroes.message)
     return
   }
 
-  const index = Math.floor(Math.random() * heroes.length)
-  const hero = heroes[index]
+  const hero = getRandomItem(heroes)
 
   const embed = new EmbedBuilder()
     .setColor(0x729c7c)

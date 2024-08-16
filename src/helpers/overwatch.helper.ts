@@ -14,6 +14,6 @@ export async function getHeroes(role: string) {
     )
     return response.data as Hero[]
   } catch (error) {
-    return error as string
+    return new Error(error as string)
   }
 }
