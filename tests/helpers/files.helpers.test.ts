@@ -1,4 +1,4 @@
-import { isDirectory, isFile } from '~/helpers/files.helpers'
+import { isDirectory, isFile } from '~/helpers/files.helper'
 
 describe('isFile', () => {
   it('should return true when called with valid file name', () => {

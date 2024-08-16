@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import { Command } from '~/types'
 import { Collection } from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
-import { isDirectory } from './files.helpers'
+import { isDirectory } from './files.helper'
 
 export function getCommands(ignoreWarnings = true) {
   const commands: Command[] = []
@@ -16,14 +16,14 @@ export function getCommands(ignoreWarnings = true) {
   const foldersPath = path.join(rootDir, 'src', 'commands')
   const commandFolders = fs
     .readdirSync(foldersPath)
-    .filter((folder) => isDirectory(folder))
+    .filter(folder => isDirectory(folder))
 
   for (const folder of commandFolders) {
     // Grab all the command files from the commands directory you created earlier
     const commandsPath = path.join(foldersPath, folder)
     const commandFiles = fs
       .readdirSync(commandsPath)
-      .filter((file) => file.endsWith('.ts'))
+      .filter(file => file.endsWith('.ts'))
 
     // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
     for (const file of commandFiles) {

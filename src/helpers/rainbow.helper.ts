@@ -1,6 +1,6 @@
 import r6operators, { Operator } from 'r6operators'
 import sharp from 'sharp'
-import { getRandomItem } from './random.helpers'
+import { getRandomItem } from './random.helper'
 
 export const OperatorSides = {
   ATTACKER: 'Attacker',
@@ -14,20 +14,20 @@ export function getOperators() {
 export function getAttackerOperators() {
   const operators = getOperators()
 
-  return operators.filter((op) => op.role === OperatorSides.ATTACKER)
+  return operators.filter(op => op.role === OperatorSides.ATTACKER)
 }
 
 export function getDefenderOperators() {
   const operators = getOperators()
 
-  return operators.filter((op) => op.role === OperatorSides.DEFENDER)
+  return operators.filter(op => op.role === OperatorSides.DEFENDER)
 }
 
 // Get operator by operator id (lowercased operator name)
 export function getOperator(name: string) {
   const operators = getOperators()
 
-  return operators.find((operator) => operator.id === name)
+  return operators.find(operator => operator.id === name)
 }
 
 // Picks a random operator from all available operators
