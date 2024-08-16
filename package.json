@@ -1,0 +1,38 @@
+{
+  "name": "monkee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "npx jest",
+    "deploy": "ts-node src/scripts/deploy-commands.ts",
+    "deploy-dev": "ts-node src/scripts/deploy-commands-dev.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "module-alias": "^2.2.3",
+    "r6operators": "^2.9.0",
+    "sharp": "^0.33.4",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.1.0",
+    "eslint": "^9.9.0",
+    "jest": "^29.7.0",
+    "jest-module-name-mapper": "^0.1.5",
+    "ts-jest": "^29.2.4",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.1.0"
+  },
+  "_moduleAliases": {
+    "~": "./src"
+  }
+}
