@@ -2,7 +2,6 @@ import {
   ChatInputCommandInteraction,
   SlashCommandBuilder,
   EmbedBuilder,
-  AttachmentBuilder,
 } from 'discord.js'
 import CommandBuilder from '~/classes/command.classes'
 import { getCommands } from '~/helpers/commands.helper'
